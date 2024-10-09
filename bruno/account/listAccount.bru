@@ -1,0 +1,16 @@
+meta {
+  name: listAccount
+  type: http
+  seq: 3
+}
+
+get {
+  url: {{baseURL}}/accounts?page_id=2&page_size=5
+  body: none
+  auth: none
+}
+
+params:query {
+  page_id: 2
+  page_size: 5
+}
