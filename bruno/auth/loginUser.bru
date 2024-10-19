@@ -1,0 +1,22 @@
+meta {
+  name: loginUser
+  type: http
+  seq: 1
+}
+
+post {
+  url: {{baseURL}}/users/login
+  body: json
+  auth: none
+}
+
+body:json {
+  {
+    "username": "huannguyen",
+    "password": "secret"
+  }
+}
+
+script:post-response {
+  bru.setEnvVar("jwt_token",res.body.access_token)
+}

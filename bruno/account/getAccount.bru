@@ -13,3 +13,7 @@ get {
 params:path {
   id: 1
 }
+
+headers {
+  authorization: Bearer {{jwt_token}}
+}
