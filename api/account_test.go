@@ -15,8 +15,8 @@ import (
 	mockdb "github.com/huannguyen2114/go-toy-project/db/mock"
 	db "github.com/huannguyen2114/go-toy-project/db/sqlc"
 	"github.com/huannguyen2114/go-toy-project/token"
+	"github.com/huannguyen2114/go-toy-project/util"
 	"github.com/stretchr/testify/require"
-	"github.com/techschool/simplebank/util"
 	"go.uber.org/mock/gomock"
 )
 
@@ -89,7 +89,7 @@ func TestGetAccountAPI(t *testing.T) {
 				store.EXPECT().
 					GetAccount(gomock.Any(), gomock.Eq(account.ID)).
 					Times(1).
-					Return(db.Account{}, db.ErrRecordNotFound)
+					Return(db.Account{}, sql.ErrNoRows)
 			},
 			checkResponse: func(t *testing.T, recorder *httptest.ResponseRecorder) {
 				require.Equal(t, http.StatusNotFound, recorder.Code)
