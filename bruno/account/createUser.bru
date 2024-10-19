@@ -1,0 +1,21 @@
+meta {
+  name: createUser
+  type: http
+  seq: 5
+}
+
+post {
+  url: {{baseURL}}/users
+  body: json
+  auth: none
+}
+
+body:json {
+  {
+      "username": "huannguyen",
+      "full_name": "Huan nguyen",
+      "email": "huanss@email.com",
+      "password": "secret"
+  }
+  
+}
